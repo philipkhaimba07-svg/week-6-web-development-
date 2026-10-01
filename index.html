@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SpendWise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>SpendWise</h1>
+    <p>Know where your money goes.</p>
+  </header>
+
+  <main>
+    <!-- Dashboard summary -->
+    <section class="panel" aria-labelledby="summary-title">
+      <h2 id="summary-title">This month</h2>
+
+      <div class="figures">
+        <div>
+          <span class="figure-label">Budget</span>
+          <strong id="budget-display">KES 0</strong>
+        </div>
+        <div>
+          <span class="figure-label">Spent</span>
+          <strong id="total-display">KES 0</strong>
+        </div>
+        <div>
+          <span class="figure-label">Left</span>
+          <strong id="remaining-display">KES 0</strong>
+        </div>
+      </div>
+
+      <div class="bar" id="progress" role="progressbar" aria-label="Budget used"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="bar-fill" id="progress-fill"></div>
+      </div>
+
+      <p class="status" id="status-message" role="status"></p>
+
+      <form id="budget-form" class="row-form">
+        <label for="budget-input">Monthly budget (KES)</label>
+        <input type="number" id="budget-input" min="1" step="1" placeholder="e.g. 20000">
+        <button type="submit">Set budget</button>
+      </form>
+    </section>
+
+    <!-- Add expense -->
+    <section class="panel" aria-labelledby="add-title">
+      <h2 id="add-title">Add an expense</h2>
+      <form id="expense-form" novalidate>
+        <div class="field">
+          <label for="description">What was it for?</label>
+          <input type="text" id="description" placeholder="e.g. Lunch">
+        </div>
+        <div class="field">
+          <label for="amount">Amount (KES)</label>
+          <input type="number" id="amount" min="1" step="1" placeholder="e.g. 350">
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category"></select>
+        </div>
+        <p class="error" id="form-error" role="alert"></p>
+        <button type="submit">Add expense</button>
+      </form>
+    </section>
+
+    <!-- Expense list -->
+    <section class="panel" aria-labelledby="list-title">
+      <div class="panel-head">
+        <h2 id="list-title">Your expenses</h2>
+        <div class="filter">
+          <label for="filter">Show</label>
+          <select id="filter"></select>
+        </div>
+      </div>
+      <ul id="expense-list" class="expense-list"></ul>
+      <button type="button" id="clear-btn" class="secondary">Clear all expenses</button>
+    </section>
+
+    <!-- Category breakdown -->
+    <section class="panel" aria-labelledby="cat-title">
+      <h2 id="cat-title">Spending by category</h2>
+      <ul id="category-list" class="category-list"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
